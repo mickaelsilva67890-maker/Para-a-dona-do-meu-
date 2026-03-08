@@ -16,7 +16,7 @@ display:flex;
 flex-direction:column;
 align-items:center;
 text-align:center;
-overflow:auto;
+overflow:hidden;
 }
 
 /* estrelas */
@@ -36,6 +36,33 @@ from{background-position:0 0;}
 to{background-position:10000px 5000px;}
 }
 
+/* tela inicial */
+
+#intro{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:90px;
+letter-spacing:12px;
+color:#ff4d6d;
+z-index:10;
+}
+
+/* nome animado */
+
+#nome span{
+opacity:0;
+animation:aparecer 1s forwards;
+}
+
+@keyframes aparecer{
+to{opacity:1;}
+}
+
 h1{
 font-size:70px;
 letter-spacing:6px;
@@ -50,45 +77,55 @@ line-height:1.6;
 padding:20px;
 }
 
+/* botão */
+
 button{
-margin:10px;
-padding:12px 25px;
+padding:15px 30px;
 font-size:18px;
 border:none;
 border-radius:30px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
+transition:0.3s;
 }
 
-/* mensagem final */
+button:hover{
+transform:scale(1.1);
+}
 
-#mensagemFinal{
-display:none;
-font-size:24px;
-max-width:700px;
-color:#ffd1dc;
-margin-top:20px;
+/* balões */
+
+.balao{
+position:absolute;
+background:#ff4d6d;
+padding:12px 18px;
+border-radius:25px;
+font-size:18px;
+white-space:nowrap;
+animation:subir 12s linear forwards;
+opacity:0.9;
+}
+
+@keyframes subir{
+0%{transform:translateY(100vh);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-120px);opacity:0;}
 }
 
 /* corações */
 
 .coracao{
-position:fixed;
+position:absolute;
 color:#ff4d6d;
 font-size:20px;
-animation:subir 6s linear infinite;
+animation:subirCoracao 6s linear infinite;
 }
 
-@keyframes subir{
+@keyframes subirCoracao{
 0%{transform:translateY(100vh);opacity:0}
 50%{opacity:1}
 100%{transform:translateY(-10vh);opacity:0}
-}
-
-iframe{
-margin-top:20px;
-border-radius:12px;
 }
 
 </style>
@@ -97,6 +134,12 @@ border-radius:12px;
 <body>
 
 <div class="estrelas"></div>
+
+<!-- INTRO -->
+
+<div id="intro">
+<div id="nome"></div>
+</div>
 
 <h1>TAUANE ❤️</h1>
 
@@ -123,25 +166,9 @@ alguém que merece ser admirada.
 Feliz Dia da Mulher 🌹
 </p>
 
-<!-- campo para link do youtube -->
+<button onclick="mostrarMensagem()">Clique aqui Tauane ❤️</button>
 
-<input id="linkMusica" placeholder="Cole aqui o link da música do YouTube" style="padding:10px;width:300px;border-radius:10px;border:none">
-
-<br>
-
-<button onclick="carregarVideo()">
-Colocar música 🎶
-</button>
-
-<div id="video"></div>
-
-<br>
-
-<button onclick="mostrarMensagem()">
-Clique aqui amore ❤️
-</button>
-
-<div id="mensagemFinal">
+<div id="mensagemFinal" style="display:none;font-size:24px;color:#ffd1dc;padding:20px;max-width:700px;">
 A verdade é que eu fiz tudo isso
 porque você é alguém que mexe comigo
 de um jeito que poucas pessoas conseguem.
@@ -152,47 +179,23 @@ Talvez você nem imagine o quanto
 
 <script>
 
-function carregarVideo(){
+/* nome aparecendo letra por letra */
 
-let link = document.getElementById("linkMusica").value.trim()
+const nome="TAUANE"
+const container=document.getElementById("nome")
 
-let id=""
+nome.split("").forEach((letra,i)=>{
+const span=document.createElement("span")
+span.textContent=letra
+span.style.animationDelay=(i*0.6)+"s"
+container.appendChild(span)
+})
 
-if(link.includes("watch?v=")){
-id = link.split("watch?v=")[1].split("&")[0]
-}
+setTimeout(()=>{
+document.getElementById("intro").style.display="none"
+},5000)
 
-else if(link.includes("youtu.be/")){
-id = link.split("youtu.be/")[1].split("?")[0]
-}
-
-if(id){
-
-let embed =
-"https://www.youtube.com/embed/" +
-id +
-"?autoplay=1&controls=1&rel=0"
-
-document.getElementById("video").innerHTML =
-'<iframe width="350" height="200" src="'+embed+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
-
-}
-
-}
-
-</script>
-
-let link=document.getElementById("linkMusica").value
-
-let id=link.split("v=")[1]
-
-if(id){
-let embed="https://www.youtube.com/embed/"+id+"?autoplay=1"
-document.getElementById("video").innerHTML =
-'<iframe width="320" height="180" src="'+embed+'" frameborder="0" allow="autoplay"></iframe>'
-}
-
-}
+/* botão */
 
 function mostrarMensagem(){
 document.getElementById("mensagemFinal").style.display="block"
@@ -203,13 +206,9 @@ document.getElementById("mensagemFinal").style.display="block"
 function criarCoracao(){
 
 const c=document.createElement("div")
-
 c.className="coracao"
-
 c.innerHTML="❤"
-
 c.style.left=Math.random()*100+"vw"
-
 c.style.fontSize=(10+Math.random()*25)+"px"
 
 document.body.appendChild(c)
@@ -218,7 +217,42 @@ setTimeout(()=>{c.remove()},6000)
 
 }
 
-setInterval(criarCoracao,300)
+setInterval(criarCoracao,400)
+
+/* balões */
+
+const frases=[
+"Tem algo em você que prende meu pensamento.",
+"Seu sorriso tem um efeito estranho em mim.",
+"Você aparece na minha mente quando menos espero.",
+"Algumas pessoas passam… você fica.",
+"Tem algo em você que não consigo ignorar.",
+"Seu jeito tem um impacto em mim.",
+"Você tem noção do efeito que causa?",
+"É impossível não reparar em você.",
+"Talvez você nem imagine o quanto chama minha atenção.",
+"Você tem algo raro."
+]
+
+function criarBalao(){
+
+const balao=document.createElement("div")
+
+balao.className="balao"
+
+balao.innerText=frases[Math.floor(Math.random()*frases.length)]
+
+balao.style.left=Math.random()*90+"vw"
+
+document.body.appendChild(balao)
+
+setTimeout(()=>{
+balao.remove()
+},12000)
+
+}
+
+setInterval(criarBalao,2500)
 
 </script>
 
