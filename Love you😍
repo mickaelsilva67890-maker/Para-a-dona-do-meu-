@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Para Tauane</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+font-family:Georgia, serif;
+text-align:center;
+overflow:hidden;
+}
+
+h1{
+font-size:40px;
+opacity:0;
+animation:aparecer 3s forwards;
+}
+
+p{
+font-size:22px;
+max-width:600px;
+margin-top:20px;
+opacity:0;
+animation:aparecer 4s forwards;
+}
+
+button{
+margin-top:40px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#surpresa{
+margin-top:30px;
+font-size:26px;
+opacity:0;
+}
+
+@keyframes aparecer{
+to{opacity:1}
+}
+
+.coracao{
+position:absolute;
+color:#ff4d6d;
+font-size:18px;
+animation:subir 6s linear infinite;
+}
+
+@keyframes subir{
+0%{transform:translateY(100vh);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-10vh);opacity:0}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Tauane ❤️</h1>
+
+<p>
+Eu poderia te mandar apenas uma mensagem…  
+mas você merece algo mais especial que isso.
+</p>
+
+<button onclick="mostrar()">Clique aqui</button>
+
+<div id="surpresa">
+Você não é coincidência na minha vida…  
+é a melhor escolha que meu coração fez.
+</div>
+
+<script>
+
+function mostrar(){
+document.getElementById("surpresa").style.opacity="1"
+}
+
+function criarCoracao(){
+const c=document.createElement("div")
+c.className="coracao"
+c.innerHTML="❤"
+c.style.left=Math.random()*100+"vw"
+c.style.fontSize=(10+Math.random()*20)+"px"
+
+document.body.appendChild(c)
+
+setTimeout(()=>{
+c.remove()
+},6000)
+}
+
+setInterval(criarCoracao,400)
+
+</script>
+
+</body>
+</html>
