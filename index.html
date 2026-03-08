@@ -88,12 +88,18 @@ animation:subir 6s linear infinite;
 100%{transform:translateY(-10vh);opacity:0}
 }
 
+/* mensagem final */
+
 #mensagemFinal{
 margin-top:20px;
 font-size:24px;
 max-width:700px;
 display:none;
 color:#ffd1dc;
+}
+
+audio{
+margin-top:10px;
 }
 
 </style>
@@ -128,15 +134,19 @@ alguém que merece ser admirada.
 Feliz Dia da Mulher 🌹
 </p>
 
-<button onclick="document.getElementById('arquivo').click()">
-Escolher música 🎶
+<!-- botão escolher música -->
+
+<button onclick="selecionarMusica()">
+Adicionar música 🎶
 </button>
 
-<input type="file" id="arquivo" accept="audio/*" style="display:none">
+<input type="file" id="arquivoMusica" accept="audio/*">
 
 <audio id="player" controls></audio>
 
 <br>
+
+<!-- botão surpresa -->
 
 <button onclick="mostrarMensagem()">
 Clique aqui Tauane ❤️
@@ -145,7 +155,7 @@ Clique aqui Tauane ❤️
 <div id="mensagemFinal">
 A verdade é que eu fiz tudo isso
 porque você é alguém que mexe comigo
-de um jeito que outra pessoa não conseguem.
+de um jeito que poucas pessoas conseguem.
 
 Talvez você nem imagine o quanto
 é especial para mim.
@@ -153,20 +163,30 @@ Talvez você nem imagine o quanto
 
 <script>
 
-const input=document.getElementById("arquivo")
-const player=document.getElementById("player")
-
-input.addEventListener("change",function(){
-const file=this.files[0]
-if(file){
-player.src=URL.createObjectURL(file)
-player.play()
+function selecionarMusica(){
+document.getElementById("arquivoMusica").click();
 }
-})
+
+document.getElementById("arquivoMusica").addEventListener("change",function(){
+const file=this.files[0];
+if(file){
+const player=document.getElementById("player");
+player.src=URL.createObjectURL(file);
+player.play();
+}
+});
 
 function mostrarMensagem(){
-document.getElementById("mensagemFinal").style.display="block"
+const msg=document.getElementById("mensagemFinal");
+
+if(msg.style.display==="none" || msg.style.display===""){
+msg.style.display="block";
+}else{
+msg.style.display="none";
 }
+}
+
+/* corações */
 
 function criarCoracao(){
 const c=document.createElement("div")
