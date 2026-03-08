@@ -2,20 +2,20 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<title>Para Tauane</title>
+<title>Para Tauane ❤️</title>
 
 <style>
 
 body{
 margin:0;
 height:100vh;
-background:black;
+background:linear-gradient(135deg,#0f2027,#203a43,#000);
 color:white;
+font-family:Georgia,serif;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-font-family:Georgia;
 text-align:center;
 overflow:hidden;
 }
@@ -27,7 +27,7 @@ position:absolute;
 width:100%;
 height:100%;
 background:url("https://i.imgur.com/YKY28eT.png");
-animation:mover 60s linear infinite;
+animation:mover 80s linear infinite;
 opacity:0.4;
 }
 
@@ -36,21 +36,34 @@ from{background-position:0 0;}
 to{background-position:10000px 5000px;}
 }
 
+/* nome */
+
 h1{
-font-size:70px;
+font-size:75px;
 letter-spacing:6px;
 color:#ff4d6d;
-animation:aparecer 4s forwards;
+animation:pulsar 2s infinite;
 }
+
+@keyframes pulsar{
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
+}
+
+/* texto */
 
 p{
-font-size:22px;
-max-width:650px;
-margin-top:20px;
+font-size:23px;
+max-width:750px;
+line-height:1.6;
+padding:20px;
 }
 
+/* botões */
+
 button{
-margin-top:25px;
+margin:10px;
 padding:12px 25px;
 font-size:18px;
 border:none;
@@ -75,6 +88,14 @@ animation:subir 6s linear infinite;
 100%{transform:translateY(-10vh);opacity:0}
 }
 
+#mensagemFinal{
+margin-top:20px;
+font-size:24px;
+max-width:700px;
+display:none;
+color:#ffd1dc;
+}
+
 </style>
 </head>
 
@@ -85,26 +106,66 @@ animation:subir 6s linear infinite;
 <h1>TAUANE ❤️</h1>
 
 <p>
-Hoje é o Dia da Mulher…  
-mas na verdade qualquer dia fica mais bonito  
-quando penso em você.
+Hoje é o Dia da Mulher…
 
-Você tem algo raro:  
-a capacidade de iluminar tudo ao seu redor.
+Mas a verdade é que quando penso em você,
+qualquer dia parece ganhar mais cor.
+
+Existe algo em você que chama minha atenção de um jeito diferente.
+Algo que faz meu pensamento voltar para você
+mesmo quando tento focar em qualquer outra coisa.
+
+Seu jeito, seu sorriso,
+e até as pequenas coisas que talvez você nem perceba…
+
+acabam ficando na minha mente.
+
+Então hoje não é apenas uma homenagem ao Dia da Mulher.
+É também uma forma de reconhecer
+que você é alguém especial,
+alguém que merece ser admirada.
 
 Feliz Dia da Mulher 🌹
 </p>
 
-<button onclick="tocarMusica()">Tocar música 🎶</button>
+<button onclick="document.getElementById('arquivo').click()">
+Escolher música 🎶
+</button>
 
-<audio id="musica" loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<input type="file" id="arquivo" accept="audio/*" style="display:none">
+
+<audio id="player" controls></audio>
+
+<br>
+
+<button onclick="mostrarMensagem()">
+Clique aqui Tauane ❤️
+</button>
+
+<div id="mensagemFinal">
+A verdade é que eu fiz tudo isso
+porque você é alguém que mexe comigo
+de um jeito que outra pessoa não conseguem.
+
+Talvez você nem imagine o quanto
+é especial para mim.
+</div>
 
 <script>
 
-function tocarMusica(){
-document.getElementById("musica").play();
+const input=document.getElementById("arquivo")
+const player=document.getElementById("player")
+
+input.addEventListener("change",function(){
+const file=this.files[0]
+if(file){
+player.src=URL.createObjectURL(file)
+player.play()
+}
+})
+
+function mostrarMensagem(){
+document.getElementById("mensagemFinal").style.display="block"
 }
 
 function criarCoracao(){
@@ -116,9 +177,7 @@ c.style.fontSize=(10+Math.random()*25)+"px"
 
 document.body.appendChild(c)
 
-setTimeout(()=>{
-c.remove()
-},6000)
+setTimeout(()=>{c.remove()},6000)
 }
 
 setInterval(criarCoracao,300)
