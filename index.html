@@ -154,6 +154,34 @@ Talvez você nem imagine o quanto
 
 function carregarVideo(){
 
+let link = document.getElementById("linkMusica").value.trim()
+
+let id=""
+
+if(link.includes("watch?v=")){
+id = link.split("watch?v=")[1].split("&")[0]
+}
+
+else if(link.includes("youtu.be/")){
+id = link.split("youtu.be/")[1].split("?")[0]
+}
+
+if(id){
+
+let embed =
+"https://www.youtube.com/embed/" +
+id +
+"?autoplay=1&controls=1&rel=0"
+
+document.getElementById("video").innerHTML =
+'<iframe width="350" height="200" src="'+embed+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
+
+}
+
+}
+
+</script>
+
 let link=document.getElementById("linkMusica").value
 
 let id=link.split("v=")[1]
