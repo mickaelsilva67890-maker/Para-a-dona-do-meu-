@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para o Meu Amor ❤️</title>
+
+<title>Para Você ❤️</title>
 
 <style>
 
@@ -13,6 +16,7 @@ font-family:Arial;
 background:#000;
 color:white;
 text-align:center;
+overflow-x:hidden;
 }
 
 /* capa */
@@ -26,7 +30,7 @@ align-items:center;
 }
 
 .hero h1{
-font-size:42px;
+font-size:45px;
 color:#ff4d6d;
 }
 
@@ -34,31 +38,43 @@ color:#ff4d6d;
 
 button{
 padding:15px 30px;
+font-size:18px;
 border:none;
 border-radius:30px;
 background:#ff4d6d;
 color:white;
-font-size:18px;
 cursor:pointer;
 }
 
 /* carta */
 
 #carta{
-display:none;
+
 max-width:700px;
 margin:auto;
 padding:30px;
-font-size:20px;
-line-height:1.6;
+font-size:22px;
+line-height:1.8;
+
+opacity:0;
+max-height:0;
+overflow:hidden;
+
+transition:all 1s ease;
+
 }
 
-/* contador */
+#carta.aberta{
 
-#contador{
-font-size:24px;
-color:#ff4d6d;
-margin-top:30px;
+opacity:1;
+max-height:2000px;
+
+}
+
+/* versos */
+
+.verso{
+margin:18px 0;
 }
 
 /* corações */
@@ -95,95 +111,70 @@ opacity:0;
 
 <section class="hero">
 
-<h1>Para o Meu Amor ❤️</h1>
+<h1>Para Você ❤️</h1>
 
 <p>Eu fiz algo especial para você</p>
 
-<button id="btnCarta">Abrir minha carta 💌</button>
+<button onclick="abrirCarta()">Abrir minha carta 💌</button>
 
 </section>
 
 <section id="carta">
 
-<h2>Minha Carta Para Você</h2>
+<h2>Uma carta para você</h2>
 
-<p>
+<div class="verso">1. Entre tantas pessoas no mundo, meu pensamento escolheu você.</div>
 
-Desde que você entrou na minha vida,
-meus dias ficaram mais leves.
+<div class="verso">2. Seu sorriso tem uma forma estranha de acalmar meu coração.</div>
 
-Seu sorriso tem algo especial,
-algo que sempre consegue mudar
-o meu humor e trazer paz.
+<div class="verso">3. Às vezes eu paro e percebo que você virou parte dos meus dias.</div>
 
-Talvez você nem imagine,
-mas muitas vezes eu me pego
-pensando em você.
+<div class="verso">4. Seu jeito ficou guardado em um lugar especial dentro de mim.</div>
 
-Essa página é apenas uma pequena forma
-de mostrar o quanto você é importante para mim.
+<div class="verso">5. Existem pessoas bonitas… mas você tem algo além disso.</div>
 
-</p>
+<div class="verso">6. Algo em você prende meu olhar sem eu perceber.</div>
+
+<div class="verso">7. Seu nome aparece nos meus pensamentos mais do que deveria.</div>
+
+<div class="verso">8. Talvez você não saiba, mas sua presença muda meu dia.</div>
+
+<div class="verso">9. Algumas pessoas passam… você permanece.</div>
+
+<div class="verso">10. E no meio de tantos caminhos, o meu continua encontrando você.</div>
 
 </section>
 
-<h2>Nosso tempo juntos ⏳</h2>
-
-<div id="contador"></div>
-
 <script>
 
-/* esperar carregar */
+/* abrir carta */
 
-document.addEventListener("DOMContentLoaded", function(){
+function abrirCarta(){
 
-const botao = document.getElementById("btnCarta")
-const carta = document.getElementById("carta")
-
-botao.addEventListener("click", function(){
-
-carta.style.display = "block"
-
-})
-
-})
-
-/* contador */
-
-const dataInicio = new Date("2024-01-01")
-
-function atualizarContador(){
-
-const agora = new Date()
-const diff = agora - dataInicio
-
-const dias = Math.floor(diff/(1000*60*60*24))
-const horas = Math.floor(diff/(1000*60*60))%24
-const minutos = Math.floor(diff/(1000*60))%60
-const segundos = Math.floor(diff/1000)%60
-
-document.getElementById("contador").innerHTML =
-dias+" dias "+horas+" horas "+minutos+" minutos "+segundos+" segundos ❤️"
+document.getElementById("carta").classList.add("aberta")
 
 }
-
-setInterval(atualizarContador,1000)
 
 /* corações */
 
 function criarCoracao(){
 
 const c=document.createElement("div")
+
 c.className="coracao"
+
 c.innerHTML="❤"
 
 c.style.left=Math.random()*100+"vw"
-c.style.fontSize=(10+Math.random()*30)+"px"
+
+c.style.fontSize=(10+Math.random()*25)+"px"
 
 document.body.appendChild(c)
 
-setTimeout(function(){
+setTimeout(()=>{
+
 c.remove()
+
 },6000)
 
 }
@@ -193,4 +184,5 @@ setInterval(criarCoracao,400)
 </script>
 
 </body>
+
 </html>
