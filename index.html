@@ -2,267 +2,240 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<title>Para Tauane ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para o Meu Amor ❤️</title>
 
 <style>
 
 body{
 margin:0;
-height:100vh;
-background:linear-gradient(135deg,#0f2027,#203a43,#000);
+font-family:Arial, sans-serif;
+background:#000;
 color:white;
-font-family:Georgia,serif;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* capa */
+
+.hero{
+height:100vh;
 display:flex;
 flex-direction:column;
-align-items:center;
-text-align:center;
-overflow:hidden;
-}
-
-/* estrelas */
-
-.estrelas{
-position:fixed;
-width:100%;
-height:100%;
-background:url("https://i.imgur.com/YKY28eT.png");
-animation:mover 80s linear infinite;
-opacity:0.4;
-z-index:-1;
-}
-
-@keyframes mover{
-from{background-position:0 0;}
-to{background-position:10000px 5000px;}
-}
-
-/* intro nome */
-
-#intro{
-position:fixed;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-align-items:center;
 justify-content:center;
-font-size:90px;
-letter-spacing:12px;
+align-items:center;
+background:linear-gradient(180deg,#000,#111);
+}
+
+.hero h1{
+font-size:40px;
 color:#ff4d6d;
-z-index:10;
-}
-
-#nome span{
-opacity:0;
-animation:aparecer 1s forwards;
-}
-
-@keyframes aparecer{
-to{opacity:1;}
-}
-
-/* título */
-
-h1{
-font-size:70px;
-letter-spacing:6px;
-color:#ff4d6d;
-margin-top:40px;
-}
-
-/* texto */
-
-p{
-font-size:23px;
-max-width:750px;
-line-height:1.6;
-padding:20px;
 }
 
 /* botão */
 
 button{
-padding:15px 30px;
-font-size:18px;
+padding:12px 25px;
 border:none;
-border-radius:30px;
+border-radius:25px;
 background:#ff4d6d;
 color:white;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.1);
-}
-
-/* balões */
-
-.balao{
-position:absolute;
-background:#ff4d6d;
-padding:12px 18px;
-border-radius:25px;
 font-size:18px;
-white-space:nowrap;
-animation:subir 12s linear forwards;
-opacity:0.9;
+cursor:pointer;
 }
 
-@keyframes subir{
-0%{
-transform:translateY(100vh);
-opacity:0;
+/* carta */
+
+#carta{
+display:none;
+max-width:700px;
+margin:auto;
+padding:20px;
+font-size:20px;
+line-height:1.6;
 }
-20%{
-opacity:1;
+
+/* contador */
+
+#contador{
+font-size:24px;
+margin:40px 0;
+color:#ff4d6d;
 }
-100%{
-transform:translateY(-120px);
-opacity:0;
+
+/* galeria */
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+padding:20px;
 }
+
+.galeria img{
+width:100%;
+border-radius:10px;
 }
 
 /* corações */
 
 .coracao{
-position:absolute;
+position:fixed;
 color:#ff4d6d;
-font-size:20px;
-animation:subirCoracao 6s linear infinite;
+animation:subir 6s linear infinite;
 }
 
-@keyframes subirCoracao{
-0%{transform:translateY(100vh);opacity:0}
-50%{opacity:1}
-100%{transform:translateY(-10vh);opacity:0}
+@keyframes subir{
+
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="estrelas"></div>
+<section class="hero">
 
-<!-- intro -->
+<h1>Para o Meu Amor ❤️</h1>
 
-<div id="intro">
-<div id="nome"></div>
-</div>
+<p>Uma pequena surpresa feita só para você</p>
 
-<h1>TAUANE ❤️</h1>
+<button onclick="abrirCarta()">Toque para abrir a carta</button>
+
+</section>
+
+<section id="carta">
+
+<h2>Minha Carta Para Você 💌</h2>
 
 <p>
-Hoje é o Dia da Mulher…
 
-Mas a verdade é que quando penso em você,
-qualquer dia parece ganhar mais cor.
+Desde que você entrou na minha vida,
+os meus dias ficaram diferentes.
 
-Existe algo em você que chama minha atenção de um jeito diferente.
-Algo que faz meu pensamento voltar para você
-mesmo quando tento focar em qualquer outra coisa.
+Seu sorriso, seu jeito,
+as pequenas coisas que você faz…
 
-Seu jeito, seu sorriso,
-e até as pequenas coisas que talvez você nem perceba…
+tudo isso ficou guardado
+em um lugar especial dentro de mim.
 
-acabam ficando na minha mente.
+Essa página é só uma pequena forma
+de mostrar o quanto você é importante.
 
-Então hoje não é apenas uma homenagem ao Dia da Mulher.
-É também uma forma de reconhecer
-que você é alguém especial,
-alguém que merece ser admirada.
-
-Feliz Dia da Mulher 🌹
 </p>
 
-<button onclick="mostrarMensagem()">Clique aqui Tauane ❤️</button>
+</section>
 
-<div id="mensagemFinal" style="display:none;font-size:24px;color:#ffd1dc;padding:20px;max-width:700px;">
-A verdade é que eu fiz tudo isso
-porque você é alguém que mexe comigo
-de um jeito que poucas pessoas conseguem.
+<h2>Nosso tempo juntos ⏳</h2>
 
-Talvez você nem imagine o quanto
-é especial para mim.
+<div id="contador"></div>
+
+<h2>Nossos Momentos 📸</h2>
+
+<div class="galeria">
+
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+
 </div>
+
+<button onclick="tocarMusica()">Tocar nossa música 🎵</button>
+
+<audio id="musica" loop>
+
+<source src="musica.mp3" type="audio/mpeg">
+
+</audio>
 
 <script>
 
-/* nome aparecendo letra por letra */
+/* abrir carta */
 
-const nome="TAUANE"
-const container=document.getElementById("nome")
+function abrirCarta(){
 
-nome.split("").forEach((letra,i)=>{
-const span=document.createElement("span")
-span.textContent=letra
-span.style.animationDelay=(i*0.6)+"s"
-container.appendChild(span)
-})
+document.getElementById("carta").style.display="block"
 
-setTimeout(()=>{
-document.getElementById("intro").style.display="none"
-},5000)
+}
 
-/* botão mensagem */
+/* contador relacionamento */
 
-function mostrarMensagem(){
-document.getElementById("mensagemFinal").style.display="block"
+const dataInicio = new Date("2024-01-01")
+
+function atualizarContador(){
+
+const agora = new Date()
+
+const diff = agora - dataInicio
+
+const dias = Math.floor(diff / (1000*60*60*24))
+
+const horas = Math.floor(diff / (1000*60*60))
+
+const minutos = Math.floor(diff / (1000*60))
+
+const segundos = Math.floor(diff / 1000)
+
+document.getElementById("contador").innerHTML =
+dias + " dias ❤️ " +
+horas + " horas ❤️ " +
+minutos + " minutos ❤️ " +
+segundos + " segundos"
+
+}
+
+setInterval(atualizarContador,1000)
+
+/* música */
+
+function tocarMusica(){
+
+document.getElementById("musica").play()
+
 }
 
 /* corações */
 
 function criarCoracao(){
 
-const c=document.createElement("div")
+const c = document.createElement("div")
+
 c.className="coracao"
+
 c.innerHTML="❤"
+
 c.style.left=Math.random()*100+"vw"
-c.style.fontSize=(10+Math.random()*25)+"px"
+
+c.style.fontSize=(10+Math.random()*30)+"px"
 
 document.body.appendChild(c)
 
-setTimeout(()=>{c.remove()},6000)
+setTimeout(()=>{
+
+c.remove()
+
+},6000)
 
 }
 
 setInterval(criarCoracao,400)
-
-/* balões */
-
-const frases=[
-"Tem algo em você que prende meu pensamento.",
-"Seu sorriso tem um efeito estranho em mim.",
-"Você aparece na minha mente quando menos espero.",
-"Algumas pessoas passam… você fica.",
-"Tem algo em você que não consigo ignorar.",
-"Seu jeito tem um impacto em mim.",
-"Você tem noção do efeito que causa?",
-"É impossível não reparar em você.",
-"Talvez você nem imagine o quanto chama minha atenção.",
-"Você tem algo raro."
-]
-
-function criarBalao(){
-
-const balao=document.createElement("div")
-
-balao.className="balao"
-
-balao.innerText=frases[Math.floor(Math.random()*frases.length)]
-
-balao.style.left=Math.random()*90+"vw"
-
-document.body.appendChild(balao)
-
-setTimeout(()=>{
-balao.remove()
-},12000)
-
-}
-
-setInterval(criarBalao,2500)
 
 </script>
 
