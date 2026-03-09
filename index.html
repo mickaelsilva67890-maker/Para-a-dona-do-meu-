@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Para Você ❤️</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
 background:#000;
 color:white;
 text-align:center;
-overflow-x:hidden;
 }
-
-/* capa */
 
 .hero{
 height:100vh;
@@ -29,55 +22,24 @@ justify-content:center;
 align-items:center;
 }
 
-.hero h1{
-font-size:45px;
-color:#ff4d6d;
-}
-
-/* botão */
-
 button{
 padding:15px 30px;
 font-size:18px;
 border:none;
-border-radius:30px;
+border-radius:25px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
 }
 
-/* carta */
-
 #carta{
-
+display:none;
 max-width:700px;
 margin:auto;
 padding:30px;
 font-size:22px;
 line-height:1.8;
-
-opacity:0;
-max-height:0;
-overflow:hidden;
-
-transition:all 1s ease;
-
 }
-
-#carta.aberta{
-
-opacity:1;
-max-height:2000px;
-
-}
-
-/* versos */
-
-.verso{
-margin:18px 0;
-}
-
-/* corações */
 
 .coracao{
 position:fixed;
@@ -86,103 +48,69 @@ animation:subir 6s linear infinite;
 }
 
 @keyframes subir{
-
-0%{
-transform:translateY(100vh);
-opacity:0;
+0%{transform:translateY(100vh);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
 }
-
-50%{
-opacity:1;
-}
-
-100%{
-transform:translateY(-10vh);
-opacity:0;
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<section class="hero">
+<div class="hero">
 
-<h1>Para Você ❤️</h1>
-
-<p>Eu fiz algo especial para você</p>
+<h1>Uma surpresa para você ❤️</h1>
 
 <button onclick="abrirCarta()">Abrir minha carta 💌</button>
 
-</section>
+</div>
 
-<section id="carta">
+<div id="carta">
 
-<h2>Uma carta para você</h2>
+<h2>Para você</h2>
 
-<div class="verso">1. Entre tantas pessoas no mundo, meu pensamento escolheu você.</div>
+<p>1. Entre tantas pessoas no mundo, meu pensamento sempre encontra você.</p>
+<p>2. Seu sorriso tem uma forma única de acalmar meu coração.</p>
+<p>3. Às vezes eu percebo que você virou parte dos meus dias.</p>
+<p>4. Seu jeito ficou guardado em um lugar especial dentro de mim.</p>
+<p>5. Existem pessoas bonitas… mas você tem algo além disso.</p>
+<p>6. Algo em você prende meu olhar sem eu perceber.</p>
+<p>7. Seu nome aparece nos meus pensamentos mais do que deveria.</p>
+<p>8. Talvez você não saiba, mas sua presença muda meu dia.</p>
+<p>9. Algumas pessoas passam… você permanece.</p>
+<p>10. E entre tantos caminhos, o meu continua encontrando você.</p>
 
-<div class="verso">2. Seu sorriso tem uma forma estranha de acalmar meu coração.</div>
-
-<div class="verso">3. Às vezes eu paro e percebo que você virou parte dos meus dias.</div>
-
-<div class="verso">4. Seu jeito ficou guardado em um lugar especial dentro de mim.</div>
-
-<div class="verso">5. Existem pessoas bonitas… mas você tem algo além disso.</div>
-
-<div class="verso">6. Algo em você prende meu olhar sem eu perceber.</div>
-
-<div class="verso">7. Seu nome aparece nos meus pensamentos mais do que deveria.</div>
-
-<div class="verso">8. Talvez você não saiba, mas sua presença muda meu dia.</div>
-
-<div class="verso">9. Algumas pessoas passam… você permanece.</div>
-
-<div class="verso">10. E no meio de tantos caminhos, o meu continua encontrando você.</div>
-
-</section>
+</div>
 
 <script>
 
-/* abrir carta */
-
 function abrirCarta(){
-
-document.getElementById("carta").classList.add("aberta")
-
+document.getElementById("carta").style.display = "block";
 }
-
-/* corações */
 
 function criarCoracao(){
 
-const c=document.createElement("div")
+const c = document.createElement("div");
 
-c.className="coracao"
+c.className = "coracao";
 
-c.innerHTML="❤"
+c.innerHTML = "❤";
 
-c.style.left=Math.random()*100+"vw"
+c.style.left = Math.random()*100 + "vw";
 
-c.style.fontSize=(10+Math.random()*25)+"px"
+c.style.fontSize = (10 + Math.random()*30) + "px";
 
-document.body.appendChild(c)
+document.body.appendChild(c);
 
-setTimeout(()=>{
-
-c.remove()
-
-},6000)
+setTimeout(function(){
+c.remove();
+},6000);
 
 }
 
-setInterval(criarCoracao,400)
+setInterval(criarCoracao,400);
 
 </script>
 
 </body>
-
 </html>
